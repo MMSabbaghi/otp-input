@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:200");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0f0f1a;
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-weight: 200;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container p {
+  margin-bottom: 20px;
+}
+
+.otp-form {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.otp-number {
+  text-align: center;
+  outline: none;
+  background-color: #38383f;
+  color: inherit;
+  border: none;
+  padding: 5px;
+  width: 80px;
+  height: 80px;
+  font-size: 20px;
+}
