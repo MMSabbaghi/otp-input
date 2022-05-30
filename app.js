@@ -7,7 +7,11 @@ function handleFocus(e) {
 }
 
 function focusByOrder(order) {
-  if (order < otpNumbers.length - 1 || order > 0) otpNumbers[order]?.focus();
+  if (order < otpNumbers.length - 1 || order > 0) {
+    const target = otpNumbers[order] || {};
+    target.focus();
+    target.select();
+  }
 }
 
 function handleChange(e) {
