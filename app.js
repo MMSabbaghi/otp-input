@@ -3,32 +3,38 @@ let currentInput;
 let result = [];
 
 function handleFocus(e) {
-  const { order } = e.target.dataset;
-  currentInput = +order;
+  currentInput = +e.target.dataset.order;
 }
 
 function focusByOrder(order) {
-  if (order < otpNumbers.length - 1 || order > 0) {
-    document.querySelector(`.otp-number[data-order="${order}"]`)?.focus();
-  }
+  if (order < otpNumbers.length - 1 || order > 0) otpNumbers[order]?.focus();
 }
 
 function handleChange(e) {
-  const { value } = e.target;
+  const value = e.target.value[0];
   if (value) {
-    e.target.value = value[0] || "";
-    result[currentInput] = +value[0];
+    e.target.value = value || "";
+    result[currentInput] = +value;
     focusByOrder(currentInput + 1);
   }
 }
 
 function handleKeyUP(e) {
-  const key = e.key;
-  if (key === "Backspace") {
-    if (result[currentInput]) result[currentInput] = null;
-    else focusByOrder(currentInput - 1);
-  } else if (key === "ArrowRight") focusByOrder(currentInput + 1);
-  else if (key === "ArrowLeft") focusByOrder(currentInput - 1);
+  switch (e.key) {
+    case "Backspace": {
+      if (result[currentInput]) result[currentInput] = null;
+      else focusByOrder(currentInput - 1);
+      break;
+    }
+    case "ArrowRight":
+      focusByOrder(currentInput + 1);
+      break;
+    case "ArrowLeft":
+      focusByOrder(currentInput - 1);
+      break;
+    default:
+      break;
+  }
 }
 
 otpNumbers.forEach((input) => {
